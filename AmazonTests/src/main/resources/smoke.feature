@@ -117,3 +117,27 @@ Feature: Smoke
     Examples:
       | homePage                | keywordTitle |
       | https://www.amazon.com/ | Luggage      |
+
+  Scenario Outline: Check changing user's name
+    Given User opens '<homePage>' page
+    And User clicks Sign In button
+    And User checks Email or mobile phone number field visibility on sign in popup
+    And User enters his Email in Email or mobile phone number field '<userEmail>'
+    And User checks Continue button visibility on sign in popup
+    And User clicks Continue button
+    And User checks Password field visibility on sign in popup
+    And User enters his Password '<userPassword>'
+    And User checks Sign-In button visibility on sign in popup
+    And User clicks Sign-In button on sign in popup
+    And User clicks Account & Lists in header
+    And User clicks Login & security
+    And User checks name box visibility
+    And User clicks Edit button for changing user's name
+    And User checks title of page is '<changeNameTitle>'
+    And User changes current name to '<newName>' new name
+    And User checks Save changes button
+    Then User checks that current name is '<currentName>'
+
+    Examples:
+      | homePage                | userEmail           | userPassword | changeNameTitle | newName | currentName |
+      | https://www.amazon.com/ | easyhunt1@gmail.com | 1111Qqqq     | Change your name | OlhaTest | OlhaTest |

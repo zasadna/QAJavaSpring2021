@@ -75,7 +75,7 @@ public class SearchResultsPage extends BasePage {
                 return word;
             }
         }
-        return "not find";
+        return "not found";
     }
 
 

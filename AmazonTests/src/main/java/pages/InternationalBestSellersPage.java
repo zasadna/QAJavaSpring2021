@@ -47,6 +47,6 @@ public class InternationalBestSellersPage extends BasePage{
                 return word;
             }
         }
-        return "not find";
+        return "not found";
     }
 }

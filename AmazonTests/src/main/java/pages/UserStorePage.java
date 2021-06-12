@@ -18,6 +18,30 @@ public class UserStorePage extends BasePage{
     @FindBy(xpath = "//span[contains(text(),'There are no recommended items for you')]")
     private WebElement buyAgainEmptyText;
 
+    @FindBy(xpath = "//a[@id='nav-link-accountList']")
+    private WebElement accountAndListsButtonInHeader;
+
+    @FindBy(xpath = "//a[@class='ya-card__whole-card-link']//h2[contains(text(),'Login')]")
+    private WebElement loginAndSecurityBox;
+
+    @FindBy(xpath = "//div[@class='a-row']/span[contains(text(),'Name')]")
+    private WebElement userNameFromSecurityBox;
+
+    @FindBy(xpath = "//input[@class='a-button-input'][@class='a-button-input']")
+    private WebElement editButtonFromSecurityBox;
+
+    @FindBy(xpath = "//h1[contains(text(),'Change your name')]")
+    private WebElement changeNameTitle;
+
+    @FindBy(xpath = "//input[@name='customerName']")
+    private WebElement customerNameInput;
+
+    @FindBy(xpath = "//input[@id='cnep_1C_submit_button']")
+    private WebElement saveChangesButton;
+
+    @FindBy(xpath = "//div[contains(text(),'Olha')]")
+    private WebElement currentName;
+
     public UserStorePage(WebDriver driver) {
         super(driver);
     }
@@ -36,5 +60,38 @@ public class UserStorePage extends BasePage{
 
     public String getBuyAgainEmptyText() {
         return buyAgainEmptyText.getText();
+    }
+
+    public void clickAccountAndListsButtonInHeader() {
+        accountAndListsButtonInHeader.click();
+    }
+
+    public void clickloginAndSecurity() {
+        loginAndSecurityBox.click();
+    }
+
+    public boolean isuserNameFromSecurityBoxVisible() {
+        return userNameFromSecurityBox.isDisplayed();
+    }
+
+    public void clickEditButtonFromSecurityBox() {
+        editButtonFromSecurityBox.click();
+    }
+
+    public String getChangeNameTitle() {
+        return changeNameTitle.getText();
+    }
+
+    public void setCustomerNameInput(final String newName) {
+        customerNameInput.clear();
+        customerNameInput.sendKeys(newName);
+    }
+
+    public void clickSaveChangesButton() {
+        saveChangesButton.click();
+    }
+
+    public String getCurrentName() {
+        return currentName.getText();
     }
 }

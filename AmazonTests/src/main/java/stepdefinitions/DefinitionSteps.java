@@ -276,4 +276,45 @@ public class DefinitionSteps {
     public void userChecksThatTitleFirstProductHasWordKeywordTitleFromInternationalBestSellersPage(final String word) {
         assertEquals(internationalBestSellersPage.findWord(internationalBestSellersPage.getLuggageTitle(), word), word);
     }
+
+    @And("User clicks Account & Lists in header")
+    public void userClicksAccountListsInHeader() {
+        userStorePage = pageFactoryManager.getUserStorePage();
+        userStorePage.clickAccountAndListsButtonInHeader();
+    }
+
+    @And("User clicks Login & security")
+    public void userClicksLoginSecurity() {
+        userStorePage.clickloginAndSecurity();
+    }
+
+    @And("User checks name box visibility")
+    public void userChecksNameBoxVisibility() {
+        userStorePage.isuserNameFromSecurityBoxVisible();
+    }
+
+    @And("User clicks Edit button for changing user's name")
+    public void userClicksEditButtonForChangingUserSName() {
+        userStorePage.clickEditButtonFromSecurityBox();
+    }
+
+    @And("User checks title of page is {string}")
+    public void userChecksTitleOfPageIsChangeNameTitle(final String title) {
+        assertEquals(userStorePage.getChangeNameTitle(), title);
+    }
+
+    @And("User changes current name to {string} new name")
+    public void userChangesCurrentNameToNewNameNewName(final String newName) {
+        userStorePage.setCustomerNameInput(newName);
+    }
+
+    @And("User checks Save changes button")
+    public void userChecksSaveChangesButton() {
+        userStorePage.clickSaveChangesButton();
+    }
+
+    @Then("User checks that current name is {string}")
+    public void userChecksThatCurrentNameIsCurrentName(final String currentName) {
+        assertEquals(userStorePage.getCurrentName(), currentName);
+    }
 }
