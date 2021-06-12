@@ -71,11 +71,6 @@ public class DefinitionSteps {
         searchResultsPage.clickAddToListButton();
     }
 
-    @After
-    public void tearDown() {
-        driver.close();
-    }
-
     @And("User checks Sign In button visibility")
     public void userChecksSignInButtonVisibility() {
         homePage.isSignInButtonVisible();
@@ -109,7 +104,6 @@ public class DefinitionSteps {
         assertEquals(signInPage.getEmailOrMobilePhoneNumberErrorMessage(), expecteMessage);
     }
 
-
     @Then("User checks Sign in page is {string}")
     public void userChecksSignInPageIsSignInPage(final String expectedAmount) {
         assertEquals(signInPage.getUrl(), expectedAmount); //getCurrentUrl()
@@ -130,7 +124,6 @@ public class DefinitionSteps {
         signInPage.enterTextToPasswordField(expectedText);
     }
 
-
     @And("User checks Sign-In button visibility on sign in popup")
     public void userChecksSignInButtonVisibilityOnSignInPopup() {
         assertTrue(signInPage.isSignInPasswordButtonVisible());
@@ -140,7 +133,6 @@ public class DefinitionSteps {
     public void userClicksSignInButtonOnSignInPopup() {
         signInPage.clickSignInPasswordButton();
     }
-
 
     @Then("User checks user was logged in to site as {string}")
     public void userChecksUserWasLoggedInToSiteAsUserName(final String expectedUserName) {
@@ -192,9 +184,9 @@ public class DefinitionSteps {
     @And("User checks Cart button visibility")
     public void userChecksCartButtonVisibility() {
         productPage = pageFactoryManager.getProductPage();
+        productPage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
         assertTrue(productPage.isCartButtonFromPopupVisible());
     }
-
 
     @And("User clicks Cart button")
     public void userClicksCartButton() {
@@ -331,6 +323,18 @@ public class DefinitionSteps {
 
     @Then("User checks that current page is {string}")
     public void userChecksThatCurrentPageIsCurrentTitleOfPage(final String currentTitle) {
+        userStorePage.waitVisibilityOfElement(DEFAULT_TIMEOUT, userStorePage.getSimilarPopup());
+        userStorePage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
         assertEquals(userStorePage.getSimilarItemsTitleOfPage(), currentTitle);
+    }
+
+    @Then("User checks Product details visibility")
+    public void userChecksProductDetailsVisibility() {
+        assertTrue(searchResultsPage.isProductDetailsVisible());
+    }
+
+    @After
+    public void tearDown() {
+        driver.close();
     }
 }

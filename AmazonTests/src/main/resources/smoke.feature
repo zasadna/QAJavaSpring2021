@@ -161,6 +161,27 @@ Feature: Smoke
       | homePage                | userEmail           | userPassword | currentTitleOfPage |
       | https://www.amazon.com/ | easyhunt1@gmail.com | 1111Qqqq     | Similar items      |
 
+  Scenario Outline: Check Product details after searching
+    Given User opens '<homePage>' page
+    And User clicks Sign In button
+    And User checks Email or mobile phone number field visibility on sign in popup
+    And User enters his Email in Email or mobile phone number field '<userEmail>'
+    And User checks Continue button visibility on sign in popup
+    And User clicks Continue button
+    And User checks Password field visibility on sign in popup
+    And User enters his Password '<userPassword>'
+    And User checks Sign-In button visibility on sign in popup
+    And User clicks Sign-In button on sign in popup
+    And User checks search field visibility
+    When User makes search by keyword '<keyword>'
+    And User clicks search button
+    And User opens first product after searching
+    Then User checks Product details visibility
+
+    Examples:
+      | homePage                | userEmail           | userPassword | keyword | condition |
+      | https://www.amazon.com/ | easyhunt1@gmail.com | 1111Qqqq     | sticker | new       |
+
 
 
 

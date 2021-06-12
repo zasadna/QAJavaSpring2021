@@ -50,10 +50,11 @@ public class UserStorePage extends BasePage{
     @FindBy(xpath = "//span[@id='a-autoid-2']/span/input")
     private WebElement moreLikeThisSecondButton;
 
+    @FindBy(xpath = "//div[@class='a-popover-inner']")
+    private WebElement similarPopup;
+
     @FindBy(xpath = "//div[@class='mlt-header']")
     private WebElement similarItemsTitleOfPage;
-
-
 
     public UserStorePage(WebDriver driver) {
         super(driver);
@@ -114,6 +115,10 @@ public class UserStorePage extends BasePage{
 
     public void clickMoreLikeThisSecondButton() {
         moreLikeThisSecondButton.click();
+    }
+
+    public WebElement getSimilarPopup() {
+        return similarPopup;
     }
 
     public String getSimilarItemsTitleOfPage() {

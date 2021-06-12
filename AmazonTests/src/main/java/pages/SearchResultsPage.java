@@ -14,6 +14,9 @@ public class SearchResultsPage extends BasePage {
     @FindBy(xpath = "//*[@id='p_89/Razer']//a")
     private WebElement brandFilterOptions;
 
+   /* @FindBy(xpath = "//a/span[contains(text(),'New')]")
+    private WebElement conditionFilterOptions;
+*/
     @FindBy(xpath = "//input[@name='low-price']")
     private WebElement minPriceFilterOptions;
 
@@ -32,6 +35,9 @@ public class SearchResultsPage extends BasePage {
     @FindBy(xpath = "//a/span[contains(text(),'Art')]")
     private List<WebElement> listAtrBooks;
 
+    @FindBy(xpath = "//h2[contains(text(),'Product details')]")
+    private WebElement productDetails;
+
     public SearchResultsPage(WebDriver driver) {
         super(driver);
     }
@@ -47,6 +53,10 @@ public class SearchResultsPage extends BasePage {
     public void clickBrandFilterOptions() {
         brandFilterOptions.click();
     }
+
+   /* public void clickConditionFilterOptions() {
+        conditionFilterOptions.click();
+    }*/
 
     public void setMinPriceFilterOptions(final String minPrice) {
         minPriceFilterOptions.sendKeys(minPrice);
@@ -78,6 +88,9 @@ public class SearchResultsPage extends BasePage {
         return "not found";
     }
 
+    public boolean isProductDetailsVisible() {
+        return productDetails.isDisplayed();
+    }
 
 
 
