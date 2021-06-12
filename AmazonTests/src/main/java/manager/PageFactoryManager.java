@@ -38,4 +38,8 @@ public class PageFactoryManager {
     public UserStorePage getUserStorePage() {
         return new UserStorePage(driver);
     }
+
+    public InternationalBestSellersPage getInternationalBestSellersPage() {
+        return new InternationalBestSellersPage(driver);
+    }
 }

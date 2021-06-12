@@ -22,6 +22,10 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//input[@id='nav-search-submit-button']")
     private WebElement searchButton;
 
+    @FindBy(xpath = "//div[@id='desktop-1']//a[contains(text(),'Shop now')]")
+    private WebElement shopNowFromAmazonTopSellers;
+
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -67,6 +71,10 @@ public class HomePage extends BasePage {
 
     public void clickSearchButton() {
         searchButton.click();
+    }
+
+    public void clickShopNowFromAmazonTopSellersLink() {
+        shopNowFromAmazonTopSellers.click();
     }
 
 }

@@ -106,3 +106,14 @@ Feature: Smoke
       | homePage                | userEmail           | userPassword | title       | message                                                                                                                 |
       | https://www.amazon.com/ | easyhunt1@gmail.com | 1111Qqqq     | Your Orders | There are no recommended items for you to buy again at this time. Check Your Orders for items you previously purchased. |
 
+  Scenario Outline: Check searching goods from Amazon Top Sellers link
+    Given User opens '<homePage>' page
+    And User clicks Shop now link in Amazon Top Sellers
+    And User clicks Luggage left category
+    And User clicks Luggage Sets left category
+    And User opens first product from International Best Sellers page
+    Then User checks that title first product has word '<keywordTitle>' from International Best Sellers page
+
+    Examples:
+      | homePage                | keywordTitle |
+      | https://www.amazon.com/ | Luggage      |

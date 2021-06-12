@@ -26,6 +26,7 @@ public class DefinitionSteps {
     SignInPage signInPage;
     PageFactoryManager pageFactoryManager;
     UserStorePage userStorePage;
+    InternationalBestSellersPage internationalBestSellersPage;
 
     @Before
     public void testsSetUp() {
@@ -59,7 +60,7 @@ public class DefinitionSteps {
 
     @And("User opens first product")
     public void openFirstProduct() {
-       searchResultsPage = pageFactoryManager.getSearchResultsPage();
+        searchResultsPage = pageFactoryManager.getSearchResultsPage();
         searchResultsPage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
         searchResultsPage.clickFirstItemOfListGoods();
     }
@@ -247,5 +248,32 @@ public class DefinitionSteps {
     @Then("User checks that page shows {string}")
     public void userChecksThatPageShowsMessage(final String text) {
         assertEquals(userStorePage.getBuyAgainEmptyText(), text);
+    }
+
+    @And("User clicks Shop now link in Amazon Top Sellers")
+    public void userClicksShopNowLinkInAmazonTopSellers() {
+        homePage = pageFactoryManager.getHomePage();
+        homePage.clickShopNowFromAmazonTopSellersLink();
+    }
+
+    @And("User clicks Luggage left category")
+    public void userClicksLuggageLeftCategory() {
+        internationalBestSellersPage = pageFactoryManager.getInternationalBestSellersPage();
+        internationalBestSellersPage.clickLuggageDepartments();
+    }
+
+    @And("User clicks Luggage Sets left category")
+    public void userClicksLuggageSetsLeftCategory() {
+        internationalBestSellersPage.clickLuggageSetsDepartments();
+    }
+
+    @And("User opens first product from International Best Sellers page")
+    public void userOpensFirstProductFromInternationalBestSellersPage() {
+        internationalBestSellersPage.clickFirstItemOfListGoods();
+    }
+
+    @Then("User checks that title first product has word {string} from International Best Sellers page")
+    public void userChecksThatTitleFirstProductHasWordKeywordTitleFromInternationalBestSellersPage(final String word) {
+        assertEquals(internationalBestSellersPage.findWord(internationalBestSellersPage.getLuggageTitle(), word), word);
     }
 }
