@@ -22,7 +22,6 @@ public class DefinitionSteps {
     ShoppingCartPage shoppingCartPage;
     SearchResultsPage searchResultsPage;
     ProductPage productPage;
-    CheckoutPage checkoutPage;
     SignInPage signInPage;
     PageFactoryManager pageFactoryManager;
     UserStorePage userStorePage;
@@ -195,6 +194,7 @@ public class DefinitionSteps {
 
     @And("User checks that page opens with {string} title")
     public void userChecksThatPageOpensWithTitleTitle(final String title) {
+        shoppingCartPage = pageFactoryManager.getShoppingCartPage();
         assertEquals(shoppingCartPage.getShoppingCartTitle(), title);
     }
 

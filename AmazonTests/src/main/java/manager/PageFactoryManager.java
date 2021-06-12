@@ -27,10 +27,6 @@ public class PageFactoryManager {
         return new ProductPage(driver);
     }
 
-    public CheckoutPage getCheckoutPage() {
-        return new CheckoutPage(driver);
-    }
-
     public SignInPage getSignInPage() {
         return new SignInPage(driver);
     }
