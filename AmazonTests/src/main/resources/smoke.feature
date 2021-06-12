@@ -139,5 +139,31 @@ Feature: Smoke
     Then User checks that current name is '<currentName>'
 
     Examples:
-      | homePage                | userEmail           | userPassword | changeNameTitle | newName | currentName |
-      | https://www.amazon.com/ | easyhunt1@gmail.com | 1111Qqqq     | Change your name | OlhaTest | OlhaTest |
+      | homePage                | userEmail           | userPassword | changeNameTitle  | newName  | currentName |
+      | https://www.amazon.com/ | easyhunt1@gmail.com | 1111Qqqq     | Change your name | OlhaTest | OlhaTest    |
+
+  Scenario Outline: Check similar items
+    Given User opens '<homePage>' page
+    And User clicks Sign In button
+    And User checks Email or mobile phone number field visibility on sign in popup
+    And User enters his Email in Email or mobile phone number field '<userEmail>'
+    And User checks Continue button visibility on sign in popup
+    And User clicks Continue button
+    And User checks Password field visibility on sign in popup
+    And User enters his Password '<userPassword>'
+    And User checks Sign-In button visibility on sign in popup
+    And User clicks Sign-In button on sign in popup
+    And User clicks Browsing History button
+    And User clicks on More like this button of second item
+    Then User checks that current page is '<currentTitleOfPage>'
+
+    Examples:
+      | homePage                | userEmail           | userPassword | currentTitleOfPage |
+      | https://www.amazon.com/ | easyhunt1@gmail.com | 1111Qqqq     | Similar items      |
+
+
+
+
+
+
+

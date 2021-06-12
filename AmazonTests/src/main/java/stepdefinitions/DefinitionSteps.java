@@ -317,4 +317,20 @@ public class DefinitionSteps {
     public void userChecksThatCurrentNameIsCurrentName(final String currentName) {
         assertEquals(userStorePage.getCurrentName(), currentName);
     }
+
+    @And("User clicks Browsing History button")
+    public void userClicksBrowsingHistoryButton() {
+        userStorePage = pageFactoryManager.getUserStorePage();
+        userStorePage.clickBrowsingHistoryButton();
+    }
+
+    @And("User clicks on More like this button of second item")
+    public void userClicksOnMoreLikeThisButtonOfSecondItem() {
+        userStorePage.clickMoreLikeThisSecondButton();
+    }
+
+    @Then("User checks that current page is {string}")
+    public void userChecksThatCurrentPageIsCurrentTitleOfPage(final String currentTitle) {
+        assertEquals(userStorePage.getSimilarItemsTitleOfPage(), currentTitle);
+    }
 }

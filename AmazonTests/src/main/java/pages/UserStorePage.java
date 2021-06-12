@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class UserStorePage extends BasePage{
 
     @FindBy(xpath = "//div/span[contains(text(),'Olha')]")
@@ -11,6 +13,9 @@ public class UserStorePage extends BasePage{
 
     @FindBy(xpath = "//a[contains(text(),'Buy Again')]")
     private WebElement buyAgainButton;
+
+    @FindBy(xpath = "//div[@id='nav-xshop-container']//a/span[contains(text(),'Browsing History')]")
+    private WebElement browsingHistoryButton;
 
     @FindBy(xpath = "//h1[contains(text(),'Your Orders')]")
     private WebElement buyAgainTitleOfPage;
@@ -42,6 +47,14 @@ public class UserStorePage extends BasePage{
     @FindBy(xpath = "//div[contains(text(),'Olha')]")
     private WebElement currentName;
 
+    @FindBy(xpath = "//span[@id='a-autoid-2']/span/input")
+    private WebElement moreLikeThisSecondButton;
+
+    @FindBy(xpath = "//div[@class='mlt-header']")
+    private WebElement similarItemsTitleOfPage;
+
+
+
     public UserStorePage(WebDriver driver) {
         super(driver);
     }
@@ -52,6 +65,10 @@ public class UserStorePage extends BasePage{
 
     public void clickBuyAgainButton() {
         buyAgainButton.click();
+    }
+
+    public void clickBrowsingHistoryButton() {
+        browsingHistoryButton.click();
     }
 
     public boolean isBuyAgainTitleOfPageVisible() {
@@ -93,5 +110,13 @@ public class UserStorePage extends BasePage{
 
     public String getCurrentName() {
         return currentName.getText();
+    }
+
+    public void clickMoreLikeThisSecondButton() {
+        moreLikeThisSecondButton.click();
+    }
+
+    public String getSimilarItemsTitleOfPage() {
+        return similarItemsTitleOfPage.getText();
     }
 }
