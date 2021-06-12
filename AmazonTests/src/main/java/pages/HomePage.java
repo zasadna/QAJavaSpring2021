@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -30,8 +29,8 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
-    public void isCategoriesDropdownVisible() {
-        categoriesDropdown.isDisplayed();
+    public boolean isCategoriesDropdownVisible() {
+        return categoriesDropdown.isDisplayed();
     }
 
     public void clickCategoriesDropdown() {
@@ -60,8 +59,8 @@ public class HomePage extends BasePage {
     }
 */
 
-    public void isSearchFieldVisible() {
-        searchField.isDisplayed();
+    public boolean isSearchFieldVisible() {
+        return searchField.isDisplayed();
     }
 
     public void enterTextToSearchField(final String searchText) {

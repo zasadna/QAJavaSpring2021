@@ -27,12 +27,12 @@ public class SignInPage extends BasePage{
         super(driver);
     }
 
-    public void isEmailOrMobilePhoneNumberFieldVisible() {
-        emailOrMobilePhoneNumberField.isDisplayed();
+    public boolean isEmailOrMobilePhoneNumberFieldVisible() {
+        return emailOrMobilePhoneNumberField.isDisplayed();
     }
 
-    public void isContinueButtonVisible() {
-        continueButton.isDisplayed();
+    public boolean isContinueButtonVisible() {
+        return continueButton.isDisplayed();
     }
 
     public void clickContinueButton() {
@@ -52,8 +52,8 @@ public class SignInPage extends BasePage{
         emailOrMobilePhoneNumberField.sendKeys(setEmail);
     }
 
-    public void isPasswordFieldVisible() {
-        passwordField.isDisplayed();
+    public boolean isPasswordFieldVisible() {
+        return passwordField.isDisplayed();
     }
 
     public void enterTextToPasswordField(final String setPassword) {
@@ -61,8 +61,8 @@ public class SignInPage extends BasePage{
         passwordField.sendKeys(setPassword);
     }
 
-    public void isSignInPasswordButtonVisible() {
-        signInPasswordButton.isDisplayed();
+    public boolean isSignInPasswordButtonVisible() {
+        return signInPasswordButton.isDisplayed();
     }
 
     public void clickSignInPasswordButton() {

@@ -45,7 +45,7 @@ public class DefinitionSteps {
     @And("User checks search field visibility")
     public void checkSearchVisibility() {
         homePage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
-        homePage.isSearchFieldVisible();
+        assertTrue(homePage.isSearchFieldVisible());
     }
 
     @And("User makes search by keyword {string}")
@@ -90,12 +90,12 @@ public class DefinitionSteps {
     public void userChecksEmailOrMobilePhoneNumberFieldVisibilityOnSignInPopup() {
         signInPage = pageFactoryManager.getSignInPage();
         signInPage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
-        signInPage.isEmailOrMobilePhoneNumberFieldVisible();
+        assertTrue(signInPage.isEmailOrMobilePhoneNumberFieldVisible());
     }
 
     @And("User checks Continue button visibility on sign in popup")
     public void userChecksContinueButtonVisibilityOnSignInPopup() {
-        signInPage.isContinueButtonVisible();
+        assertTrue(signInPage.isContinueButtonVisible());
     }
 
     @And("User clicks Continue button")
@@ -122,7 +122,7 @@ public class DefinitionSteps {
 
     @And("User checks Password field visibility on sign in popup")
     public void userChecksPasswordFieldVisibilityOnSignInPopup() {
-        signInPage.isPasswordFieldVisible();
+        assertTrue(signInPage.isPasswordFieldVisible());
     }
 
     @And("User enters his Password {string}")
@@ -133,7 +133,7 @@ public class DefinitionSteps {
 
     @And("User checks Sign-In button visibility on sign in popup")
     public void userChecksSignInButtonVisibilityOnSignInPopup() {
-        signInPage.isSignInPasswordButtonVisible();
+        assertTrue(signInPage.isSignInPasswordButtonVisible());
     }
 
     @And("User clicks Sign-In button on sign in popup")
@@ -180,7 +180,7 @@ public class DefinitionSteps {
     @And("User checks Add to Cart button visibility on product page")
     public void userChecksAddToCartButtonVisibility() {
         productPage = pageFactoryManager.getProductPage();
-        productPage.isAddToCartButtonVisible();
+        assertTrue(productPage.isAddToCartButtonVisible());
     }
 
     @And("User clicks Add to Cart button on product page")
@@ -192,7 +192,7 @@ public class DefinitionSteps {
     @And("User checks Cart button visibility")
     public void userChecksCartButtonVisibility() {
         productPage = pageFactoryManager.getProductPage();
-        productPage.isCartButtonFromPopupVisible();
+        assertTrue(productPage.isCartButtonFromPopupVisible());
     }
 
 
@@ -213,7 +213,7 @@ public class DefinitionSteps {
 
     @And("User checks categories dropdown visibility")
     public void userChecksCategoriesDropdownVisibility() {
-        homePage.isCategoriesDropdownVisible();
+        assertTrue(homePage.isCategoriesDropdownVisible());
     }
 
     @And("User clicks on list of categories")
@@ -242,7 +242,7 @@ public class DefinitionSteps {
 
     @And("User checks {string} title visibility")
     public void userChecksTitleTitleVisibility(final String title) {
-        userStorePage.isBuyAgainTitleOfPageVisible();
+        assertTrue(userStorePage.isBuyAgainTitleOfPageVisible());
     }
 
     @Then("User checks that page shows {string}")
@@ -290,7 +290,7 @@ public class DefinitionSteps {
 
     @And("User checks name box visibility")
     public void userChecksNameBoxVisibility() {
-        userStorePage.isuserNameFromSecurityBoxVisible();
+        assertTrue(userStorePage.isuserNameFromSecurityBoxVisible());
     }
 
     @And("User clicks Edit button for changing user's name")
