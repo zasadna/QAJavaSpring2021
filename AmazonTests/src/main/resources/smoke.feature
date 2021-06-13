@@ -31,7 +31,31 @@ Feature: Smoke
 
     Examples:
       | homePage                | userEmail           | userPassword | userName    |
-      | https://www.amazon.com/ | easyhunt1@gmail.com | 1111Qqqq     | Hello, Olha |
+      | https://www.amazon.com/ | easyhunt1@gmail.com | 1111QQQq     | Hello, Olha |
+
+  Scenario Outline: Check changing user's name
+    Given User opens '<homePage>' page
+    And User clicks Sign In button
+    And User checks Email or mobile phone number field visibility on sign in popup
+    And User enters his Email in Email or mobile phone number field '<userEmail>'
+    And User checks Continue button visibility on sign in popup
+    And User clicks Continue button
+    And User checks Password field visibility on sign in popup
+    And User enters his Password '<userPassword>'
+    And User checks Sign-In button visibility on sign in popup
+    And User clicks Sign-In button on sign in popup
+    And User clicks Account & Lists in header
+    And User clicks Login & security
+    And User checks name box visibility
+    And User clicks Edit button for changing user's name
+    And User checks title of page is '<changeNameTitle>'
+    And User changes current name to '<newName>' new name
+    And User checks Save changes button
+    Then User checks that current name is '<currentName>'
+
+    Examples:
+      | homePage                | userEmail           | userPassword | changeNameTitle  | newName  | currentName |
+      | https://www.amazon.com/ | easyhunt1@gmail.com | 1111QQQq     | Change your name | OlhaTest | OlhaTest    |
 
   Scenario Outline: Check adding product to Shopping List without sign in and after user has added with sign in
     Given User opens '<homePage>' page
@@ -55,7 +79,7 @@ Feature: Smoke
 
     Examples:
       | homePage                | keyword | userEmail           | userPassword |
-      | https://www.amazon.com/ | Battery | easyhunt1@gmail.com | 1111Qqqq     |
+      | https://www.amazon.com/ | Battery | easyhunt1@gmail.com | 1111QQQq     |
 
   Scenario Outline: Check add product to cart
     Given User opens '<homePage>' page
@@ -108,7 +132,7 @@ Feature: Smoke
 
     Examples:
       | homePage                | userEmail           | userPassword | title       | message                                                                                                                 |
-      | https://www.amazon.com/ | easyhunt1@gmail.com | 1111Qqqq     | Your Orders | There are no recommended items for you to buy again at this time. Check Your Orders for items you previously purchased. |
+      | https://www.amazon.com/ | easyhunt1@gmail.com | 1111QQQq     | Your Orders | There are no recommended items for you to buy again at this time. Check Your Orders for items you previously purchased. |
 
   Scenario Outline: Check searching goods from Amazon Top Sellers link
     Given User opens '<homePage>' page
@@ -121,30 +145,6 @@ Feature: Smoke
     Examples:
       | homePage                | keywordTitle |
       | https://www.amazon.com/ | Luggage      |
-
-  Scenario Outline: Check changing user's name
-    Given User opens '<homePage>' page
-    And User clicks Sign In button
-    And User checks Email or mobile phone number field visibility on sign in popup
-    And User enters his Email in Email or mobile phone number field '<userEmail>'
-    And User checks Continue button visibility on sign in popup
-    And User clicks Continue button
-    And User checks Password field visibility on sign in popup
-    And User enters his Password '<userPassword>'
-    And User checks Sign-In button visibility on sign in popup
-    And User clicks Sign-In button on sign in popup
-    And User clicks Account & Lists in header
-    And User clicks Login & security
-    And User checks name box visibility
-    And User clicks Edit button for changing user's name
-    And User checks title of page is '<changeNameTitle>'
-    And User changes current name to '<newName>' new name
-    And User checks Save changes button
-    Then User checks that current name is '<currentName>'
-
-    Examples:
-      | homePage                | userEmail           | userPassword | changeNameTitle  | newName  | currentName |
-      | https://www.amazon.com/ | easyhunt1@gmail.com | 1111Qqqq     | Change your name | OlhaTest | OlhaTest    |
 
   Scenario Outline: Check similar items
     Given User opens '<homePage>' page
@@ -163,7 +163,7 @@ Feature: Smoke
 
     Examples:
       | homePage                | userEmail           | userPassword | currentTitleOfPage |
-      | https://www.amazon.com/ | easyhunt1@gmail.com | 1111Qqqq     | Similar items      |
+      | https://www.amazon.com/ | easyhunt1@gmail.com | 1111QQQq     | Similar items      |
 
   Scenario Outline: Check Product details after searching
     Given User opens '<homePage>' page
@@ -184,4 +184,4 @@ Feature: Smoke
 
     Examples:
       | homePage                | userEmail           | userPassword | keyword |
-      | https://www.amazon.com/ | easyhunt1@gmail.com | 1111Qqqq     | sticker |
+      | https://www.amazon.com/ | easyhunt1@gmail.com | 1111QQQq     | sticker |

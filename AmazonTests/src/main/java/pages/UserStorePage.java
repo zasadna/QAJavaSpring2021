@@ -82,16 +82,20 @@ public class UserStorePage extends BasePage{
         accountAndListsButtonInHeader.click();
     }
 
-    public void clickloginAndSecurity() {
+    public void clickLoginAndSecurity() {
         loginAndSecurityBox.click();
     }
 
-    public boolean isuserNameFromSecurityBoxVisible() {
+    public boolean isUserNameFromSecurityBoxVisible() {
         return userNameFromSecurityBox.isDisplayed();
     }
 
     public void clickEditButtonFromSecurityBox() {
         editButtonFromSecurityBox.click();
+    }
+
+    public WebElement getEditButtonFromSecurityBox() {
+        return editButtonFromSecurityBox;
     }
 
     public String getChangeNameTitle() {
@@ -121,5 +125,9 @@ public class UserStorePage extends BasePage{
 
     public String getSimilarItemsTitleOfPage() {
         return similarItemsTitleOfPage.getText();
+    }
+
+    public WebElement getSaveChangesButton() {
+        return saveChangesButton;
     }
 }

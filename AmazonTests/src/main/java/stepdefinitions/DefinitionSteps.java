@@ -278,12 +278,13 @@ public class DefinitionSteps {
 
     @And("User clicks Login & security")
     public void userClicksLoginSecurity() {
-        userStorePage.clickloginAndSecurity();
+        userStorePage.clickLoginAndSecurity();
     }
 
     @And("User checks name box visibility")
     public void userChecksNameBoxVisibility() {
-        assertTrue(userStorePage.isuserNameFromSecurityBoxVisible());
+        userStorePage.waitVisibilityOfElement(DEFAULT_TIMEOUT, userStorePage.getEditButtonFromSecurityBox());
+        assertTrue(userStorePage.isUserNameFromSecurityBoxVisible());
     }
 
     @And("User clicks Edit button for changing user's name")
