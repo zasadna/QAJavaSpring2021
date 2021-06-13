@@ -50,7 +50,7 @@ public class UserStorePage extends BasePage{
     @FindBy(xpath = "//span[@id='a-autoid-2']/span/input")
     private WebElement moreLikeThisSecondButton;
 
-    @FindBy(xpath = "//div[@class='a-popover-inner']")
+    @FindBy(xpath = "//div[@class='mlt-top']")
     private WebElement similarPopup;
 
     @FindBy(xpath = "//div[@class='mlt-header']")

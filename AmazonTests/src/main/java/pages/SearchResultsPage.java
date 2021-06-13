@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class SearchResultsPage extends BasePage {
@@ -14,9 +15,6 @@ public class SearchResultsPage extends BasePage {
     @FindBy(xpath = "//*[@id='p_89/Razer']//a")
     private WebElement brandFilterOptions;
 
-   /* @FindBy(xpath = "//a/span[contains(text(),'New')]")
-    private WebElement conditionFilterOptions;
-*/
     @FindBy(xpath = "//input[@name='low-price']")
     private WebElement minPriceFilterOptions;
 
@@ -54,10 +52,6 @@ public class SearchResultsPage extends BasePage {
         brandFilterOptions.click();
     }
 
-   /* public void clickConditionFilterOptions() {
-        conditionFilterOptions.click();
-    }*/
-
     public void setMinPriceFilterOptions(final String minPrice) {
         minPriceFilterOptions.sendKeys(minPrice);
     }
@@ -80,12 +74,7 @@ public class SearchResultsPage extends BasePage {
 
     public String findWord(String text, String word){
         String[] tokens = text.split(" ");
-        for(String s:tokens){
-            if (word.equals(s)) {
-                return word;
-            }
-        }
-        return "not found";
+        return Arrays.stream(tokens).filter(x->x.equalsIgnoreCase(word)).findFirst().orElse("not found");
     }
 
     public boolean isProductDetailsVisible() {

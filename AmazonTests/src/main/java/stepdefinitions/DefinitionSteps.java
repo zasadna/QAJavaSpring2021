@@ -183,7 +183,8 @@ public class DefinitionSteps {
     @And("User checks Cart button visibility")
     public void userChecksCartButtonVisibility() {
         productPage = pageFactoryManager.getProductPage();
-        productPage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
+       // productPage.isLeftCartPopupVisible();
+        productPage.waitVisibilityOfElement(DEFAULT_TIMEOUT, productPage.getLeftCartPopup());
         assertTrue(productPage.isCartButtonFromPopupVisible());
     }
 
@@ -200,7 +201,7 @@ public class DefinitionSteps {
 
     @Then("User checks that quantity is {string}")
     public void userChecksThatQuantityIsQuantity(final String quantity) {
-        assertEquals(shoppingCartPage.getQuantityOfGoods(), quantity);
+        assertEquals(shoppingCartPage.getQuantityOfGoods().getText(), quantity);
     }
 
     @And("User checks categories dropdown visibility")
@@ -324,7 +325,6 @@ public class DefinitionSteps {
     @Then("User checks that current page is {string}")
     public void userChecksThatCurrentPageIsCurrentTitleOfPage(final String currentTitle) {
         userStorePage.waitVisibilityOfElement(DEFAULT_TIMEOUT, userStorePage.getSimilarPopup());
-        userStorePage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
         assertEquals(userStorePage.getSimilarItemsTitleOfPage(), currentTitle);
     }
 

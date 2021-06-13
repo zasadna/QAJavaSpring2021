@@ -13,6 +13,9 @@ public class ProductPage extends BasePage {
     @FindBy(xpath = "//form[@id='attach-view-cart-button-form']//input")
     private WebElement cartButtonFromPopup;
 
+    @FindBy(xpath = "//span[@id='attach-sidesheet-view-cart-button']")
+    private WebElement leftCartPopup;
+
     public ProductPage(WebDriver driver) {
         super(driver);
     }
@@ -31,6 +34,14 @@ public class ProductPage extends BasePage {
 
     public void clickCartButtonFromPopup() {
         cartButtonFromPopup.click();
+    }
+
+    public boolean isLeftCartPopupVisible() {
+        return leftCartPopup.isDisplayed();
+    }
+
+    public WebElement getLeftCartPopup() {
+        return leftCartPopup;
     }
 
 }

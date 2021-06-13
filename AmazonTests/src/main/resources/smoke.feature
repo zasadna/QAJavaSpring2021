@@ -179,8 +179,8 @@ Feature: Smoke
     Then User checks Product details visibility
 
     Examples:
-      | homePage                | userEmail           | userPassword | keyword | condition |
-      | https://www.amazon.com/ | easyhunt1@gmail.com | 1111Qqqq     | sticker | new       |
+      | homePage                | userEmail           | userPassword | keyword |
+      | https://www.amazon.com/ | easyhunt1@gmail.com | 1111Qqqq     | sticker |
 
 
 
