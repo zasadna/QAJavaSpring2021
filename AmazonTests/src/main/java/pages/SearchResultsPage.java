@@ -33,7 +33,7 @@ public class SearchResultsPage extends BasePage {
     @FindBy(xpath = "//a/span[contains(text(),'Art')]")
     private List<WebElement> listAtrBooks;
 
-    @FindBy(xpath = "//h2[contains(text(),'Product details')]")
+    @FindBy(xpath = "//h2[contains(text(),'Product')]")
     private WebElement productDetails;
 
     public SearchResultsPage(WebDriver driver) {
