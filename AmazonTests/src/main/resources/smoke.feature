@@ -33,7 +33,7 @@ Feature: Smoke
       | homePage                | userEmail           | userPassword | userName    |
       | https://www.amazon.com/ | easyhunt1@gmail.com | 1111Qqqq     | Hello, Olha |
 
-  Scenario Outline: Check add product to List without sign in
+  Scenario Outline: Check adding product to Shopping List without sign in and after user has added with sign in
     Given User opens '<homePage>' page
     And User checks search field visibility
     When User makes search by keyword '<keyword>'
@@ -48,6 +48,10 @@ Feature: Smoke
     And User enters his Password '<userPassword>'
     And User checks Sign-In button visibility on sign in popup
     And User clicks Sign-In button on sign in popup
+    And User clicks Add to List button after user has singed in
+    And User checks that list visibility
+    Then checks that item was added to list
+
 
     Examples:
       | homePage                | keyword | userEmail           | userPassword |
@@ -181,10 +185,3 @@ Feature: Smoke
     Examples:
       | homePage                | userEmail           | userPassword | keyword |
       | https://www.amazon.com/ | easyhunt1@gmail.com | 1111Qqqq     | sticker |
-
-
-
-
-
-
-

@@ -103,10 +103,10 @@ public class DefinitionSteps {
         assertEquals(signInPage.getEmailOrMobilePhoneNumberErrorMessage(), expecteMessage);
     }
 
-    @Then("User checks Sign in page is {string}")
+   /* @Then("User checks Sign in page is {string}")
     public void userChecksSignInPageIsSignInPage(final String expectedAmount) {
         assertEquals(signInPage.getUrl(), expectedAmount); //getCurrentUrl()
-    }
+    }*/
 
     @And("User enters his Email in Email or mobile phone number field {string}")
     public void userEntersHisEmailInEmailOrMobilePhoneNumberFieldUserEmail(final String expectedText) {
@@ -336,5 +336,23 @@ public class DefinitionSteps {
     @After
     public void tearDown() {
         driver.close();
+    }
+
+    @And("User clicks Add to List button after user has singed in")
+    public void userClicksAddToListButtonAfterUserHasSingedIn() {
+        productPage = pageFactoryManager.getProductPage();
+        productPage.clickAddToListButtonAfterSignIn();
+    }
+
+    @And("User checks that list visibility")
+    public void userChecksThatListVisibility() {
+        productPage.waitVisibilityOfElement(DEFAULT_TIMEOUT, productPage.getWishListPopupWithItem());
+        productPage.isWishListPopupWithItemVisible();
+    }
+
+    @Then("checks that item was added to list")
+    public void checksThatItemWasAddedToList() {
+        productPage.waitVisibilityOfElement(DEFAULT_TIMEOUT, productPage.getResultActionAddToList());
+        assertTrue(productPage.isResultActionAddToListVisible());
     }
 }

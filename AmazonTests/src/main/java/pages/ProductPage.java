@@ -16,6 +16,15 @@ public class ProductPage extends BasePage {
     @FindBy(xpath = "//span[@id='attach-sidesheet-view-cart-button']")
     private WebElement leftCartPopup;
 
+    @FindBy(xpath = "//span[@id='wishListMainButton']//input[@name='submit.add-to-registry.wishlist']")
+    private WebElement addToListButtonAfterSignIn;
+
+    @FindBy(xpath = "//h4[@class='a-popover-header-content']")
+    private WebElement wishListPopupWithItem;
+
+    @FindBy(xpath = "//span[@id='WLHUC_result_action_add']")
+    private WebElement resultActionAddToList;
+
     public ProductPage(WebDriver driver) {
         super(driver);
     }
@@ -44,4 +53,23 @@ public class ProductPage extends BasePage {
         return leftCartPopup;
     }
 
+    public void clickAddToListButtonAfterSignIn() {
+        addToListButtonAfterSignIn.click();
+    }
+
+    public WebElement getWishListPopupWithItem() {
+        return wishListPopupWithItem;
+    }
+
+    public boolean isWishListPopupWithItemVisible() {
+        return wishListPopupWithItem.isDisplayed();
+    }
+
+    public WebElement getResultActionAddToList() {
+        return resultActionAddToList;
+    }
+
+    public boolean isResultActionAddToListVisible() {
+        return resultActionAddToList.isDisplayed();
+    }
 }
