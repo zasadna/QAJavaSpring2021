@@ -80,7 +80,4 @@ public class SearchResultsPage extends BasePage {
     public boolean isProductDetailsVisible() {
         return productDetails.isDisplayed();
     }
-
-
-
 }

@@ -24,7 +24,6 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//div[@id='desktop-1']//a[contains(text(),'Shop now')]")
     private WebElement shopNowFromAmazonTopSellers;
 
-
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -53,12 +52,6 @@ public class HomePage extends BasePage {
         driver.get(url);
     }
 
-  /*
-    public void clickSignInPopupCloseButton() {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click()", signInPopupCloseButton);
-    }
-*/
-
     public boolean isSearchFieldVisible() {
         return searchField.isDisplayed();
     }
@@ -75,5 +68,4 @@ public class HomePage extends BasePage {
     public void clickShopNowFromAmazonTopSellersLink() {
         shopNowFromAmazonTopSellers.click();
     }
-
 }

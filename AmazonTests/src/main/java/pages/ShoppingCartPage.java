@@ -23,5 +23,4 @@ public class ShoppingCartPage extends BasePage {
     public WebElement getQuantityOfGoods() {
         return quantityOfGoods;
     }
-
 }
