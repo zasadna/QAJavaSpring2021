@@ -31,7 +31,7 @@ Feature: Smoke
 
     Examples:
       | homePage                | userEmail           | userPassword | userName    |
-      | https://www.amazon.com/ | easyhunt1@gmail.com | 1111QQQq     | Hello, Olha |
+      | https://www.amazon.com/ | test@gmail.com | 1111QQQq     | Hello, Olha |
 
   Scenario Outline: Check changing user's name
     Given User opens '<homePage>' page
@@ -55,7 +55,7 @@ Feature: Smoke
 
     Examples:
       | homePage                | userEmail           | userPassword | changeNameTitle  | newName  | currentName |
-      | https://www.amazon.com/ | easyhunt1@gmail.com | 1111QQQq     | Change your name | OlhaTest | OlhaTest    |
+      | https://www.amazon.com/ | test@gmail.com | 1111QQQq     | Change your name | OlhaTest | OlhaTest    |
 
   Scenario Outline: Check adding product to Shopping List without sign in and after user has added with sign in
     Given User opens '<homePage>' page
@@ -79,7 +79,7 @@ Feature: Smoke
 
     Examples:
       | homePage                | keyword | userEmail           | userPassword |
-      | https://www.amazon.com/ | Battery | easyhunt1@gmail.com | 1111QQQq     |
+      | https://www.amazon.com/ | Battery | test@gmail.com | 1111QQQq     |
 
   Scenario Outline: Check add product to cart
     Given User opens '<homePage>' page
@@ -132,7 +132,7 @@ Feature: Smoke
 
     Examples:
       | homePage                | userEmail           | userPassword | title       | message                                                                                                                 |
-      | https://www.amazon.com/ | easyhunt1@gmail.com | 1111QQQq     | Your Orders | There are no recommended items for you to buy again at this time. Check Your Orders for items you previously purchased. |
+      | https://www.amazon.com/ | test@gmail.com | 1111QQQq     | Your Orders | There are no recommended items for you to buy again at this time. Check Your Orders for items you previously purchased. |
 
   Scenario Outline: Check searching goods from Amazon Top Sellers link
     Given User opens '<homePage>' page
@@ -163,7 +163,7 @@ Feature: Smoke
 
     Examples:
       | homePage                | userEmail           | userPassword | currentTitleOfPage |
-      | https://www.amazon.com/ | easyhunt1@gmail.com | 1111QQQq     | Similar items      |
+      | https://www.amazon.com/ | test@gmail.com | 1111QQQq     | Similar items      |
 
   Scenario Outline: Check Product details after searching
     Given User opens '<homePage>' page
@@ -184,4 +184,4 @@ Feature: Smoke
 
     Examples:
       | homePage                | userEmail           | userPassword | keyword |
-      | https://www.amazon.com/ | easyhunt1@gmail.com | 1111QQQq     | sticker |
+      | https://www.amazon.com/ | test@gmail.com | 1111QQQq     | sticker |
