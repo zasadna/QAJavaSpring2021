@@ -24,8 +24,8 @@ public class Tests {
     private String expectedWordCountFromSiteResultFive = "5 words";
     private String expectedWordCountFromSiteResultTwenty = "20 words";
     private String expectedWordCountFromSiteResultDefaultValue = "5 words";
-    private String findElementByWords = "//form//label[@for='words']";
-    private String findElementByBytes = "//form//label[@for='bytes']";
+    private String generateElementByWords = "//form//label[@for='words']";
+    private String generateElementByBytes = "//form//label[@for='bytes']";
     private String loremText= "Lorem ipsum";
     private String loremWord= "lorem";
 
@@ -135,16 +135,16 @@ public class Tests {
     }
 
     private String getLengthOfLineByWords(String expectedLengthOfLine) {
-        setValue(expectedLengthOfLine, findElementByWords);
-        String actualResult = chromeDriver.findElement(By.xpath("//div[@id=\"lipsum\"]/p")).getText();
+        setValue(expectedLengthOfLine, generateElementByWords);
+        String actualResult = chromeDriver.findElement(By.xpath("//div[@id='lipsum']/p")).getText();
         String reg = "('?(\\s|$)(?=(([^']*'){2})*[^']*$)'?)";
         String[] actualResultByWords = actualResult.split(reg);
         return String.valueOf(actualResultByWords.length);
     }
 
     private String getWordCountFromSiteResult(String textSize) {
-        setValue(textSize, findElementByWords);
-        String actualResultFromLine = chromeDriver.findElement(By.xpath("//div[@id=\"generated\"]")).getText();
+        setValue(textSize, generateElementByWords);
+        String actualResultFromLine = chromeDriver.findElement(By.xpath("//div[@id='generated']")).getText();
         String noPrefixStr = "Error in result parsing.";
         String [] list = actualResultFromLine.split(",");
         if(list.length>1)
@@ -153,8 +153,8 @@ public class Tests {
     }
 
     private String getByteCountFromSiteResult(String textSize) {
-        setValue(textSize, findElementByBytes);
-        String actualResultFromLine = chromeDriver.findElement(By.xpath("//div[@id=\"generated\"]")).getText();
+        setValue(textSize, generateElementByBytes);
+        String actualResultFromLine = chromeDriver.findElement(By.xpath("//div[@id='generated']")).getText();
         String noPrefixStr = "Error in result parsing.";
         String [] list = actualResultFromLine.split(" ");
         if(list.length>1) {
@@ -174,7 +174,7 @@ public class Tests {
     public void checkThatCheckboxIsWorks() {
         chromeDriver.findElement(By.xpath("//input[@id='start']")).click();
         chromeDriver.findElement(By.xpath("//input[@id='generate']")).click();
-        String actualResult = chromeDriver.findElement(By.xpath("//div[@id=\"lipsum\"]/p")).getText();
+        String actualResult = chromeDriver.findElement(By.xpath("//div[@id='lipsum']/p")).getText();
         Assert.assertFalse(actualResult.contains(loremText));
     }
 
@@ -202,9 +202,9 @@ public class Tests {
         chromeDriver.findElement(By.xpath("//input[@id='generate']")).click();
         List<WebElement> elementsList = chromeDriver.findElements(By.xpath("//div[@id='lipsum']/p"));
         int paragraphsCount = 0;
-        for (int i = 0; i < elementsList.size() ; i++) {
-            String str = (elementsList.get(i).getText()).toLowerCase();
-            if(str.contains(loremWord)){
+        for (WebElement webElement : elementsList) {
+            String str = (webElement.getText()).toLowerCase();
+            if (str.contains(loremWord)) {
                 paragraphsCount++;
             }
         }
