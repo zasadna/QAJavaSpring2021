@@ -1,7 +1,19 @@
 package task3.part1.pageobject.tests;
 
+import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertTrue;
+
 public class GeneratedResultsTests extends BaseTest{
-    private static final String SEARCH_WORD_FISH = "//*[@id='Panes']//p[contains(text(),'рыба')]";
-    private static final String LIST_PARAGRAPHS_RESULT = "//div[@id='lipsum']/p";
-    private static final String SITE_RESULT = "//div[@id='generated']";
+    private String SEARCH_KEYWORD = "рыба";
+
+    @Test(priority = 1)
+    public void checkThatWordContainsCorrectlyInTheFirstParagraph() {
+        getHomePage().clickOnRuLanguage();
+        getGeneratedResultsPage().getTextFish();
+        assertTrue((getGeneratedResultsPage().getTextFish()).contains(SEARCH_KEYWORD), "Current test word " + SEARCH_KEYWORD + " doesn't contain in the first paragraph");
+    }
+
+
+
 }
