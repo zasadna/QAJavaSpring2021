@@ -18,12 +18,12 @@ public class DefinitionSteps {
 
     private static final long DEFAULT_TIMEOUT = 90;
     WebDriver driver;
+    PageFactoryManager pageFactoryManager;
     HomePage homePage;
     ShoppingCartPage shoppingCartPage;
     SearchResultsPage searchResultsPage;
     ProductPage productPage;
     SignInPage signInPage;
-    PageFactoryManager pageFactoryManager;
     UserStorePage userStorePage;
     InternationalBestSellersPage internationalBestSellersPage;
 
@@ -334,11 +334,6 @@ public class DefinitionSteps {
         assertTrue(searchResultsPage.isProductDetailsVisible());
     }
 
-    @After
-    public void tearDown() {
-        driver.close();
-    }
-
     @And("User clicks Add to List button after user has singed in")
     public void userClicksAddToListButtonAfterUserHasSingedIn() {
         productPage = pageFactoryManager.getProductPage();
@@ -355,5 +350,10 @@ public class DefinitionSteps {
     public void checksThatItemWasAddedToList() {
         productPage.waitVisibilityOfElement(DEFAULT_TIMEOUT, productPage.getResultActionAddToList());
         assertTrue(productPage.isResultActionAddToListVisible());
+    }
+
+    @After
+    public void tearDown() {
+        driver.close();
     }
 }

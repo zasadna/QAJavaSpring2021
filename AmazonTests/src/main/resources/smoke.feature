@@ -3,22 +3,23 @@ Feature: Smoke
   I want to test all main site functionality
   So that I can be sure that site works correctly
 
+  Background:
+    Given User opens 'https://www.amazon.com/' page
+
   Scenario Outline: Check the email error message in the sing in form
-    Given User opens '<homePage>' page
-    And User checks Sign In button visibility
-    When User clicks Sign In button
+    When User checks Sign In button visibility
+    And User clicks Sign In button
     And User checks Email or mobile phone number field visibility on sign in popup
     And User checks Continue button visibility on sign in popup
     And User clicks Continue button
     Then User checks that current error message is '<errorMessage>'
 
     Examples:
-      | homePage                | errorMessage                            |
-      | https://www.amazon.com/ | Enter your email or mobile phone number |
+      | errorMessage                            |
+      | Enter your email or mobile phone number |
 
   Scenario Outline: Check sing in form
-    Given User opens '<homePage>' page
-    And User clicks Sign In button
+    When User clicks Sign In button
     And User checks Email or mobile phone number field visibility on sign in popup
     And User enters his Email in Email or mobile phone number field '<userEmail>'
     And User checks Continue button visibility on sign in popup
@@ -30,12 +31,11 @@ Feature: Smoke
     Then User checks user was logged in to site as '<userName>'
 
     Examples:
-      | homePage                | userEmail           | userPassword | userName    |
-      | https://www.amazon.com/ | test@gmail.com | 1111QQQq     | Hello, Olha |
+      | userEmail      | userPassword | userName    |
+      | test@gmail.com | 1111QQQq     | Hello, Olha |
 
   Scenario Outline: Check changing user's name
-    Given User opens '<homePage>' page
-    And User clicks Sign In button
+    When User clicks Sign In button
     And User checks Email or mobile phone number field visibility on sign in popup
     And User enters his Email in Email or mobile phone number field '<userEmail>'
     And User checks Continue button visibility on sign in popup
@@ -54,13 +54,12 @@ Feature: Smoke
     Then User checks that current name is '<currentName>'
 
     Examples:
-      | homePage                | userEmail           | userPassword | changeNameTitle  | newName  | currentName |
-      | https://www.amazon.com/ | test@gmail.com | 1111QQQq     | Change your name | OlhaTest | OlhaTest    |
+      | userEmail      | userPassword | changeNameTitle  | newName  | currentName |
+      | test@gmail.com | 1111QQQq     | Change your name | OlhaTest | OlhaTest    |
 
   Scenario Outline: Check adding product to Shopping List without sign in and after user has added with sign in
-    Given User opens '<homePage>' page
-    And User checks search field visibility
-    When User makes search by keyword '<keyword>'
+    When User checks search field visibility
+    And User makes search by keyword '<keyword>'
     And User clicks search button
     And User opens first product
     And User clicks Add to List button
@@ -76,15 +75,13 @@ Feature: Smoke
     And User checks that list visibility
     Then checks that item was added to list
 
-
     Examples:
-      | homePage                | keyword | userEmail           | userPassword |
-      | https://www.amazon.com/ | Battery | test@gmail.com | 1111QQQq     |
+      | keyword | userEmail      | userPassword |
+      | Battery | test@gmail.com | 1111QQQq     |
 
   Scenario Outline: Check add product to cart
-    Given User opens '<homePage>' page
-    And User checks search field visibility
-    When User makes search by keyword '<keyword>'
+    When User checks search field visibility
+    And User makes search by keyword '<keyword>'
     And User clicks search button
     And User selects '<brand>' brand in the right filter
     And User sets '<minPrice>' min price in the right filter
@@ -99,25 +96,23 @@ Feature: Smoke
     Then User checks that quantity is '<quantity>'
 
     Examples:
-      | homePage                | keyword | brand | minPrice | maxPrice | title         | quantity |
-      | https://www.amazon.com/ | Headset | Razer | 149      | 150      | Shopping Cart | 1        |
+      | keyword | brand | minPrice | maxPrice | title         | quantity |
+      | Headset | Razer | 149      | 150      | Shopping Cart | 1        |
 
   Scenario Outline: Check searching by category
-    Given User opens '<homePage>' page
-    And User checks categories dropdown visibility
+    When User checks categories dropdown visibility
     And User clicks on list of categories
     And User clicks '<categoryName>' category
-    When User makes search by keyword '<keyword>'
+    And User makes search by keyword '<keyword>'
     And User clicks search button
     Then User checks that title first product has word '<keywordTitle>'
 
     Examples:
-      | homePage                | categoryName | keyword | keywordTitle |
-      | https://www.amazon.com/ | Books        | Art     | Art          |
+      | categoryName | keyword | keywordTitle |
+      | Books        | Art     | Art          |
 
   Scenario Outline: Check Buy again option
-    Given User opens '<homePage>' page
-    And User clicks Sign In button
+    When User clicks Sign In button
     And User checks Email or mobile phone number field visibility on sign in popup
     And User enters his Email in Email or mobile phone number field '<userEmail>'
     And User checks Continue button visibility on sign in popup
@@ -131,24 +126,22 @@ Feature: Smoke
     Then User checks that page shows '<message>'
 
     Examples:
-      | homePage                | userEmail           | userPassword | title       | message                                                                                                                 |
-      | https://www.amazon.com/ | test@gmail.com | 1111QQQq     | Your Orders | There are no recommended items for you to buy again at this time. Check Your Orders for items you previously purchased. |
+      | userEmail      | userPassword | title       | message                                                                                                                 |
+      | test@gmail.com | 1111QQQq     | Your Orders | There are no recommended items for you to buy again at this time. Check Your Orders for items you previously purchased. |
 
   Scenario Outline: Check searching goods from Amazon Top Sellers link
-    Given User opens '<homePage>' page
-    And User clicks Shop now link in Amazon Top Sellers
+    When User clicks Shop now link in Amazon Top Sellers
     And User clicks Luggage left category
     And User clicks Luggage Sets left category
     And User opens first product from International Best Sellers page
     Then User checks that title first product has word '<keywordTitle>' from International Best Sellers page
 
     Examples:
-      | homePage                | keywordTitle |
-      | https://www.amazon.com/ | Luggage      |
+      | keywordTitle |
+      | Luggage      |
 
   Scenario Outline: Check similar items
-    Given User opens '<homePage>' page
-    And User clicks Sign In button
+    When User clicks Sign In button
     And User checks Email or mobile phone number field visibility on sign in popup
     And User enters his Email in Email or mobile phone number field '<userEmail>'
     And User checks Continue button visibility on sign in popup
@@ -162,12 +155,11 @@ Feature: Smoke
     Then User checks that current page is '<currentTitleOfPage>'
 
     Examples:
-      | homePage                | userEmail           | userPassword | currentTitleOfPage |
-      | https://www.amazon.com/ | test@gmail.com | 1111QQQq     | Similar items      |
+      | userEmail      | userPassword | currentTitleOfPage |
+      | test@gmail.com | 1111QQQq     | Similar items      |
 
   Scenario Outline: Check Product details after searching
-    Given User opens '<homePage>' page
-    And User clicks Sign In button
+    When User clicks Sign In button
     And User checks Email or mobile phone number field visibility on sign in popup
     And User enters his Email in Email or mobile phone number field '<userEmail>'
     And User checks Continue button visibility on sign in popup
@@ -183,5 +175,5 @@ Feature: Smoke
     Then User checks Product details visibility
 
     Examples:
-      | homePage                | userEmail           | userPassword | keyword |
-      | https://www.amazon.com/ | test@gmail.com | 1111QQQq     | sticker |
+      | userEmail      | userPassword | keyword |
+      | test@gmail.com | 1111QQQq     | sticker |
